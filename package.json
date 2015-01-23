@@ -10,7 +10,7 @@
    "start": "node ./bin/www"
   },
   "dependencies": {
-    "phantomjs-node": "*",
+    "phantomjs": "*",
     "casperjs": "*",
     "spooky": "*",
 	"express": "~4.10.6",
