@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var extest = require('../public/javascripts/spookyMain.js');
+var spookyMain = require('../public/javascripts/spookyMain.js');
 var response;
 var kosmosFunc = function(req, res) {
 	response = res;
