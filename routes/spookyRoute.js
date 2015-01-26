@@ -6,7 +6,7 @@ var kosmosFunc = function(req, res) {
 	response = res;
 	if(req.query.isbn) {
 	console.log(req.query.isbn);
-	extest.makeSpooky(req.query.isbn, complete);	
+	spookyMain.makeSpooky(req.query.isbn, complete);	
 	}else {
 		res.json({
 			"error" : "please input search word."
