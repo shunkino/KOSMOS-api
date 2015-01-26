@@ -72,6 +72,7 @@ exports.makeSpooky = function(requestData, callback) {
 		});
 		spooky.on('sendBack', function(data, booktitle) {
 			callback(data, booktitle);
+			this.removeAllListeners();
 		});
 		spooky.on('errConsole', function(errMessage) {
 			console.log(errMessage);
