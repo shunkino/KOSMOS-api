@@ -23,15 +23,16 @@ var complete = function(bookData, booktitle) {
 		});
 	}else {
 		bookReqUrl = bookData[0];
-		bookKubun = bookData[1];
-		bookStatus = bookData[2];
-		bookKan = bookData[3];
-		bookCampus = bookData[4];
-		bookPlace = bookData[5];
-		bookSymbol = bookData[6];
-		bookID = bookData[7];
-		bookRes = bookData[8];
-		bookMemo = bookData[9];
+		(bookData[0] == '\n')? bookReqUrl = null : bookReqUrl = bookData[0];
+		(bookData[1] == '\n')? bookKubun = null : bookKubun	= bookData[1];
+		(bookData[2] == '\n')? bookStatus = null : bookStatus = bookData[2];
+		(bookData[3] == '\n')? bookKan = null : bookKan = bookData[3];
+		(bookData[4] == '\n')? bookCampus = null : bookCampus = bookData[4];
+		(bookData[5] == '\n')? bookPlace = null : bookPlace = bookData[5];
+		(bookData[6] == '\n')? bookSymbol = null : bookSymbol = bookData[6];
+		(bookData[7] == '\n')? bookID = null : bookID = bookData[7];
+		(bookData[8] == '\n')? bookRes = null : bookRes = bookData[8];
+		(bookData[9] == '\n')? bookMemo = null : bookMemo = bookData[9];
 		response.json({
 			"Title": booktitle,
 			"RequestURL": bookReqUrl,
