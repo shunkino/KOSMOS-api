@@ -22,7 +22,6 @@ var complete = function(bookData, booktitle) {
 			"error" : bookData
 		});
 	}else {
-		bookReqUrl = bookData[0];
 		(bookData[0] == '\n')? bookReqUrl = null : bookReqUrl = bookData[0];
 		(bookData[1] == '\n')? bookKubun = null : bookKubun	= bookData[1];
 		(bookData[2] == '\n')? bookStatus = null : bookStatus = bookData[2];
