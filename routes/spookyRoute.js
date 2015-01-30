@@ -3,33 +3,8 @@ var router = express.Router();
 var spookyMain = require('../public/javascripts/spookyMain.js');
 var response;
 
-try {
-	var Spooky = require('spooky');
-} catch (e) {
-	var Spooky = require('../lib/spooky');
-}
 
-spooky = new Spooky({
-	child: {
-		transport: 'http'
-	},
-	casper: {
-		logLevel: 'debug',
-		verbose: true
-	}
-}, function (err) {
-	spookyErrorcheck(err);
-});
-
-function spookyErrorcheck(err) {
-	if(err) {
-		e = new Error('Failed to initialize SpookyJS');
-		e.details = err;
-		throw e;
-	}
-}
-
-var kosmosFunc = function(req, res) {
+var kosmosFunc = function(spooky, req, res) {
 	response = res;
 	console.log("test");
 	if(req.query.isbn) {

@@ -26,7 +26,7 @@ exports.makeSpooky = function(spooky, requestData, callback) {
 //			e.details = err;
 //			throw e;
 //		}
-		spooky.start('http://kosmos.lib.keio.ac.jp/primo_library/libweb/action/search.do?vl(freeText0)=' + reqData + '&fn=search');
+		spooky.start('http://kosmos.lib.keio.ac.jp/primo_library/libweb/action/search.do?vl(freeText0)=' + requestData + '&fn=search');
 		spooky.waitFor(function check() {
 			return this.exists('h2.EXLResultTitle');
 		}, function then() {
