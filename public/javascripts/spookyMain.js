@@ -1,31 +1,31 @@
 var bookInfo = [];
 var bookTitle;
-try {
-	var Spooky = require('spooky');
-} catch (e) {
-	var Spooky = require('../lib/spooky');
-}
+//try {
+//	var Spooky = require('spooky');
+//} catch (e) {
+//	var Spooky = require('../lib/spooky');
+//}
 
 
-exports.makeSpooky = function(requestData, callback) {	
-	spooky = new Spooky({
-		child: {
-			transport: 'http'
-		},
-		casper: {
-			logLevel: 'debug',
-			verbose: true
-		}
-	}, function (err) {
-		spookyFunction(err, requestData);
-	});
+exports.makeSpooky = function(spooky, requestData, callback) {	
+//	spooky = new Spooky({
+//		child: {
+//			transport: 'http'
+//		},
+//		casper: {
+//			logLevel: 'debug',
+//			verbose: true
+//		}
+//	}, function (err) {
+//		spookyFunction(err, requestData);
+//	});
 
-	var spookyFunction = function(err, reqData) {
-		if (err) {
-			e = new Error('Failed to initialize SpookyJS');
-			e.details = err;
-			throw e;
-		}
+//	var spookyFunction = function(err, reqData) {
+//		if (err) {
+//			e = new Error('Failed to initialize SpookyJS');
+//			e.details = err;
+//			throw e;
+//		}
 		spooky.start('http://kosmos.lib.keio.ac.jp/primo_library/libweb/action/search.do?vl(freeText0)=' + reqData + '&fn=search');
 		spooky.waitFor(function check() {
 			return this.exists('h2.EXLResultTitle');
@@ -78,5 +78,5 @@ exports.makeSpooky = function(requestData, callback) {
 			console.log(errMessage);
 			return 0;
 		});
-	}
+	//}
 }
