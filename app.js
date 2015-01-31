@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var spookyRoute = require('./routes/spookyRoute');
 
 var app = express();
+var start = new Date();
 
 try {
 	var Spooky = require('spooky');
@@ -25,6 +26,9 @@ spooky = new Spooky({
 	spookyErrorcheck(err);
 });
 function spookyErrorcheck(err) {
+
+var now = new Date();
+console.log(now.getTime() - start.getTime());
 	if(err) {
 		e = new Error('Failed to initialize SpookyJS');
 		e.details = err;

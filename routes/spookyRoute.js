@@ -6,7 +6,6 @@ var response;
 
 var kosmosFunc = function(spooky, req, res) {
 	response = res;
-	console.log("test");
 	if(req.query.isbn) {
 		console.log(req.query.isbn);
 		spookyMain.makeSpooky(spooky, req.query.isbn, complete);	

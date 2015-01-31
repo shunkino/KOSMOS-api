@@ -5,9 +5,10 @@ var bookTitle;
 //} catch (e) {
 //	var Spooky = require('../lib/spooky');
 //}
-
+var kaisu = 0;
 
 exports.makeSpooky = function(spooky, requestData, callback) {	
+	console.log(spooky);
 //	spooky = new Spooky({
 //		child: {
 //			transport: 'http'
