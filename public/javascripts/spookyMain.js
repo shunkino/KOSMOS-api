@@ -28,6 +28,7 @@ s = new Date();
 	//			throw e;
 	//		}
 	var n;
+	var i = 0;
 	spooky.start('http://kosmos.lib.keio.ac.jp/primo_library/libweb/action/search.do?vl(freeText0)=' + requestData + '&fn=search');
 	spooky.waitFor(function check() {
 		return this.exists('h2.EXLResultTitle');
@@ -71,8 +72,9 @@ s = new Date();
 	spooky.run();
 	spooky.on('console', function(message) {
 		n = new Date();
-		console.log(n.getTime() - s.getTime());
+		console.log(n.getTime() - s.getTime() + " " + i);
 		console.log(message);
+		i++;
 	});
 	spooky.on('sendBack', function(data, booktitle) {
 		callback(data, booktitle);
