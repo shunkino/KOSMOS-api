@@ -16,6 +16,7 @@ var kosmosFunc = function(req, res) {
 
 var complete = function(bookData, booktitle) {
 	var bookReqUrl,bookKubun,bookStatus,bookKan,bookCampus,bookPlace,bookSymbol,bookID,bookRes,bookMemo;
+	console.log(bookData[10]);
 	//ここで情報を配列でもらってきてjsonを構築したらいい。
 	if(booktitle == 0) {
 		response.json({
