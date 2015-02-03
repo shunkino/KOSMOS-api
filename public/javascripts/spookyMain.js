@@ -1,5 +1,3 @@
-var bookInfo = [];
-var bookTitle;
 try {
 	var Spooky = require('spooky');
 } catch (e) {
@@ -40,7 +38,7 @@ exports.makeSpooky = function(requestData, callback) {
 				return document.querySelector('form[name="form1"]').getAttribute('action');
 			});
 		}, function timeout() {
-			bookTitle = 0;
+			var bookTitle = 0;
 			this.emit('sendBack',"failed to load form1", 0);
 			this.emit('console', this.evaluate(function() {
 				return "failed to load";
@@ -49,22 +47,45 @@ exports.makeSpooky = function(requestData, callback) {
 		spooky.then([{reqData: reqData}, function() {
 			this.thenOpen(redirect + '?func=find-b&request=' + reqData);
 		}]);
-		spooky.then(function() {
+		spooky.waitFor(function che() {
+			return this.exists('td.td1[valign="top"][nowrap]>a');
+		}, function the() {
+			this.emit('console', this.evaluate(function() {
+				return "load completed td.td1";
+			}));
 			redirect2 = this.evaluate(function() {
 				return document.querySelector('td.td1[valign="top"][nowrap]>a').getAttribute('href');
 			});
 			this.thenOpen(redirect2);
+		}, function tim() {
+			var bookTitle = 0;
+			this.emit('sendBack',"failed to load td.td1", 0);
+			this.emit('console', this.evaluate(function() {
+				return "failed to load";
+			}));
 		});
-		spooky.then(function() {
-			bookTitle = this.evaluate(function() {
-				return document.querySelector("td.text3").innerText;
-			});
-			this.emit('console', bookTitle);
-		});
+
+	//	spooky.then(function() {
+	//		redirect2 = this.evaluate(function() {
+	//			return document.querySelector('td.td1[valign="top"][nowrap]>a').getAttribute('href');
+	//		});
+	//		this.thenOpen(redirect2);
+	//	});
+//		spooky.then(function() {
+//			bookTitle = this.evaluate(function() {
+//				return document.querySelector("td.text3").innerText;
+//			});
+//			this.emit('console', bookTitle);
+//		});
 		spooky.waitFor(function ch() {
 			return this.exists('td.td1');
 		}, function th() {
-			bookInfo = this.evaluate(function() {
+			var bookTitle = this.evaluate(function() {
+				return document.querySelector("td.text3").innerText;
+			});
+			this.emit('console', bookTitle);
+
+			var bookInfo = this.evaluate(function() {
 				var bookArray = document.querySelectorAll("td.td1");
 				return Array.prototype.map.call(bookArray, function(elem) {
 					if(elem.querySelector('a') != null) {	
@@ -72,12 +93,13 @@ exports.makeSpooky = function(requestData, callback) {
 					}else{return elem.innerText;}
 				});
 			});
+			this.emit('sendBack',bookInfo, bookTitle);
 		}, function ti() {
 			this.emit('sendBack', "failed to load td.td1", 0);		
 		});
-		spooky.then(function() {
-			this.emit('sendBack',bookInfo, bookTitle);
-		});
+//		spooky.then(function() {
+//			this.emit('sendBack',bookInfo, bookTitle);
+//		});
 		spooky.run();
 		spooky.on('console', function(message) {
 			n = new Date();
