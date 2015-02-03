@@ -45,7 +45,8 @@ exports.makeSpooky = function(requestData, callback) {
 			}));
 		});
 		spooky.then([{reqData: reqData}, function() {
-			this.thenOpen(redirect + '?func=find-b&request=' + reqData);
+			this.thenOpen(redirect + '?func=find-b&find_code=ISBN&request=' + reqData);
+			this.thenOpen(redirect + '?func=short');
 		}]);
 		spooky.waitFor(function che() {
 			return this.exists('td.td1[valign="top"][nowrap]>a');
