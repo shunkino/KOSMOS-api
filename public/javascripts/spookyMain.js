@@ -48,9 +48,9 @@ exports.makeSpooky = function(requestData, callback) {
 			this.thenOpen(redirect + '?func=find-b&find_code=ISBN&request=' + reqData);
 			this.thenOpen(redirect + '?func=short');
 		}]);
-		spooky.waitFor(function che() {
+		spooky.waitFor(function chek() {
 			return this.exists('td.td1[valign="top"][nowrap]>a');
-		}, function the() {
+		}, function then() {
 			this.emit('console', this.evaluate(function() {
 				return "load completed td.td1";
 			}));
@@ -58,7 +58,7 @@ exports.makeSpooky = function(requestData, callback) {
 				return document.querySelector('td.td1[valign="top"][nowrap]>a').getAttribute('href');
 			});
 			this.thenOpen(redirect2);
-		}, function tim() {
+		}, function time() {
 			var bookTitle = 0;
 			this.emit('sendBack',"failed to load td.td1", 0);
 			this.emit('console', this.evaluate(function() {
@@ -78,9 +78,9 @@ exports.makeSpooky = function(requestData, callback) {
 //			});
 //			this.emit('console', bookTitle);
 //		});
-		spooky.waitFor(function ch() {
+		spooky.waitFor(function check() {
 			return this.exists('td.td1');
-		}, function th() {
+		}, function then() {
 			var bookTitle = this.evaluate(function() {
 				return document.querySelector("td.text3").innerText;
 			});
@@ -95,7 +95,7 @@ exports.makeSpooky = function(requestData, callback) {
 				});
 			});
 			this.emit('sendBack',bookInfo, bookTitle);
-		}, function ti() {
+		}, function time() {
 			this.emit('sendBack', "failed to load td.td1", 0);		
 		});
 //		spooky.then(function() {

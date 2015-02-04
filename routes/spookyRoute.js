@@ -1,15 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var spookyMain = require('../public/javascripts/spookyMain.js');
+var wordMain = require('../public/javascripts/wordMain.js');
 var response;
 var kosmosFunc = function(req, res) {
 	response = res;
 	if(req.query.isbn) {
-	console.log(req.query.isbn);
-	spookyMain.makeSpooky(req.query.isbn, complete);	
+		console.log(req.query.isbn);
+		spookyMain.makeSpooky(req.query.isbn, complete);	
+	} else if (req.query.phrase) {
+		console.log(req.query.phrase);
+		wordMain.wordSpooky(req.query.phrase, complete);
 	}else {
 		res.json({
-			"error" : "please input search word."
+			"error" : "please input search query."
 		});
 	}
 }
